@@ -3,9 +3,18 @@ local Players = game:GetService("Players")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 
--- Crear la GUI
+local GUI_NAME = "RangeGUI"
+
+-- ===== TOGGLE / DESTRUIR GUI EXISTENTE =====
+local oldGui = PlayerGui:FindFirstChild(GUI_NAME)
+if oldGui then
+    oldGui:Destroy()
+    return -- Salimos para que no se cree otra GUI
+end
+
+-- ===== CREAR NUEVA GUI =====
 local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "RangeGUI"
+screenGui.Name = GUI_NAME
 screenGui.ResetOnSpawn = false
 screenGui.Parent = PlayerGui
 
